@@ -1,4 +1,6 @@
 import React from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
@@ -9,7 +11,7 @@ const ProductCard = ({ product }) => {
       if (existingProduct.quantity < product.qty) {
         existingProduct.quantity += 1;
       } else {
-        alert("Not enough stock available!");
+        toast.error("Not enough stock available!", { position: "top-right" });
         return;
       }
     } else {
@@ -17,7 +19,7 @@ const ProductCard = ({ product }) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${product.name} added to cart!`);
+    toast.success(`${product.name} added to cart!`, { position: "top-right" });
   };
 
   return (

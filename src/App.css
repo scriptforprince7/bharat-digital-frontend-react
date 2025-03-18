@@ -83,3 +83,47 @@ button:hover {
   padding: 3px 7px;
   border-radius: 50%;
 }
+
+
+.home-container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Dark mode toggle styling */
+.dark-mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 10;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Ensure the icon adapts on smaller screens */
+@media (max-width: 480px) {
+  .dark-mode-toggle {
+    top: 22px;
+    right: 55px;
+    font-size: 1.2rem;
+  }
+}
+
+.home-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.home-buttons button:hover {
+  background: #45a049;
+}
+

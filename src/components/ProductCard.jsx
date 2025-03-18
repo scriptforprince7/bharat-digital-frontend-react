@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
     const existingProduct = cart.find((item) => item.id === product.id);
 
     if (existingProduct) {
-      if (existingProduct.quantity < product.qty) {
+      if (existingProduct.quantity < product.stock_quantity) {
         existingProduct.quantity += 1;
       } else {
         toast.error("Not enough stock available!", { position: "top-right" });
@@ -26,8 +26,8 @@ const ProductCard = ({ product }) => {
     <div className="product-card">
       <h3>{product.name}</h3>
       <p>Price: ₹{product.price}</p>
-      <p>Stock: {product.qty}</p>
-      <button onClick={handleAddToCart} disabled={product.qty <= 0}>
+      <p>Stock: {product.stock_quantity}</p>
+      <button onClick={handleAddToCart} disabled={product.stock_quantity <= 0}>
         Add to Cart
       </button>
     </div>

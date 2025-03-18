@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .cart-icon {
+    position: relative;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 50%;
+  }
+  

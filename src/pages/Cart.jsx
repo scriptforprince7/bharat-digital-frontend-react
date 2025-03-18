@@ -28,7 +28,7 @@ const Cart = () => {
       (total, item) => total + item.price * item.quantity,
       0
     );
-
+  
     const confirmOrder = await Swal.fire({
       title: "Confirm Order",
       text: `Are you sure you want to place this order for ₹${totalPrice}?`,
@@ -37,7 +37,7 @@ const Cart = () => {
       confirmButtonText: "Yes, place order!",
       cancelButtonText: "Cancel",
     });
-
+  
     if (confirmOrder.isConfirmed) {
       const { value: email } = await Swal.fire({
         title: "Enter your email",
@@ -46,18 +46,19 @@ const Cart = () => {
         showCancelButton: true,
         confirmButtonText: "Submit",
       });
-
+  
       if (email) {
         try {
-          for (const item of cart) {
-            const orderData = {
+          const orderData = {
+            products: cart.map((item) => ({
               product_id: item.id,
               quantity: item.quantity,
-              email: email,
-            };
-            await axios.post("http://localhost:5000/api/orders", orderData);
-          }
-
+            })),
+            email,
+          };
+  
+          await axios.post("http://localhost:5000/api/orders", orderData);
+  
           toast.success("Order placed successfully!");
           localStorage.removeItem("cart");
           setCart([]);
@@ -70,6 +71,7 @@ const Cart = () => {
       }
     }
   };
+  
 
   const getTotalPrice = () => cart.reduce((total, item) => total + item.price * item.quantity, 0);
 

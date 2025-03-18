@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import "react-toastify/dist/ReactToastify.css";
 import "../Cart.css"; // Make sure to create this CSS file
+import DarkModeToggle from "../components/DarkModeToggle";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -84,6 +85,7 @@ const Cart = () => {
 
 
       <h1>Your Cart</h1>
+      <DarkModeToggle /> {/* Add Dark Mode Toggle here */}
       {cart.length === 0 ? (
         <p className="empty-cart">Your cart is empty!</p>
       ) : (

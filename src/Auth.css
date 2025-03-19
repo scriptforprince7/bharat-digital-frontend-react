@@ -1,4 +1,4 @@
-.auth-container {
+.auth-container, .otp-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,14 +10,14 @@
 }
 
 /* Heading Styling */
-.auth-container h2 {
+.auth-container h2, .otp-container h2 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 1rem;
 }
 
 /* Form Container Styling */
-.auth-container form {
+.auth-container form, .otp-container form {
   background: #fff;
   padding: 25px 20px;
   border-radius: 10px;
@@ -32,7 +32,7 @@
 }
 
 /* Input Styling */
-.auth-container input {
+.auth-container input, .otp-container input {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #ddd;
@@ -51,7 +51,7 @@
 }
 
 /* Button Styling */
-.auth-container button {
+.auth-container button, .otp-container button {
   padding: 10px;
   background: #4caf50;
   color: #fff;
@@ -63,12 +63,12 @@
 }
 
 /* Button Hover */
-.auth-container button:hover {
+.auth-container button:hover, .otp-container button:hover {
   background: #45a049;
 }
 
 /* Paragraph Styling */
-.auth-container p {
+.auth-container p, .otp-container p {
   margin-top: 10px;
   font-size: 0.9rem;
   color: #555;

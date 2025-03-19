@@ -11,17 +11,23 @@ const SignupPage = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/signup", {
+      const response = await axios.post("http://localhost:5000/api/signup", {
         username,
         email,
         password,
       });
-      alert("OTP sent to your email. Please verify!");
-      navigate("/otp-verification");
+  
+      if (response.status === 200) {
+        alert("OTP sent to your email. Please verify!");
+        navigate("/otp-verification", { state: { email } });
+      }
     } catch (err) {
-      alert("Signup failed");
+      console.error("Signup error:", err.response?.data?.message || err.message);
+      alert(`Signup failed: ${err.response?.data?.message || "Unknown error"}`);
     }
   };
+  
+  
 
   return (
     <div className="auth-container">

@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# E-commerce Frontend: Product Listing & Order Placement
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project builds the frontend for an e-commerce platform, integrating with Django and Node.js APIs. It supports product browsing, order placement, authentication, and real-time notifications.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### 1. Product Listing Page
+- **Data Source:** Fetch product data from the Django API
+- **Display:** Show product name, description, price, and stock availability in a grid layout
+- **Search & Filter:** Users can search by product name and filter by price, availability, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Order Placement Page
+- **Select Product:** Users choose a product and specify quantity
+- **Order Summary:** Displays total price, product details, and stock confirmation before finalizing the order
+- **Real-Time Status:** Shows live order status updates (Pending → Shipped → Delivered)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. Notifications
+- **Order Success:** Toast/pop-up notification when an order is placed successfully
+- **Live Status Updates:** Real-time order status updates using WebSockets or Firebase
 
-### `npm test`
+### 4. Authentication
+- **Login:** JWT-based API login system
+- **Protected Routes:** Restrict order placement and user data pages to logged-in users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Bonus Features (Optional)
+- **Dark Mode:** Toggle between light and dark themes
+- **Admin Panel:** Manage products directly from a web UI
+- **Mobile-Friendly:** Fully responsive layout for phones and tablets
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup Guide
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+Ensure you have the following installed:
+- Node.js 18+
+- npm/yarn
+- Docker (optional)
 
-### `npm run eject`
+### 1. Clone the Repository
+```bash
+$ git clone <repository_url>
+$ cd frontend_project_directory
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Install Dependencies
+```bash
+$ npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Environment Variables
+Create a `.env` file:
+```
+REACT_APP_BACKEND_URL=http://localhost:8000/api/products
+REACT_APP_ORDER_API=http://localhost:5000/api/orders
+REACT_APP_WEBSOCKET_URL=ws://localhost:5000
+REACT_APP_JWT_SECRET=your_jwt_secret
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Run Development Server
+```bash
+$ npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 5. API Access
+Ensure the backend servers are running (Django & Node.js).
 
-## Learn More
+Access the frontend: `http://localhost:3000`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## User Workflow
 
-### Code Splitting
+1. **Login:**
+   - Enter credentials to receive a JWT token
+   - JWT is saved in local storage for future requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Product Listing:**
+   - Search and filter products
+   - View product details
 
-### Analyzing the Bundle Size
+3. **Order Placement:**
+   - Select product, specify quantity
+   - Review summary and confirm order
+   - Receive toast notification for order success
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Real-Time Order Status:**
+   - Email updates order status
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Contributors
+- **Frontend:** React/Next.js
+- **Backend:** Django & Node.js
+- **Real-time:** WebSockets/Firebase
+- **Design:** Mobile-first, responsive UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

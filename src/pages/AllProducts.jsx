@@ -15,7 +15,7 @@ const AllProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/products/", {
+        const response = await axios.get("https://bharat-digital-backend.onrender.com/api/products/", {
           headers: { Authorization: `Bearer ${process.env.REACT_APP_DJANGO_TOKEN}` },
         });
         setProducts(response.data);

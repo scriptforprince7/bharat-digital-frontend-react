@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import "../../../src/AddProduct.css"; // Add a CSS file for styling
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../../../src/AddProduct.css"; // Styling file
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -9,21 +12,43 @@ const AddProduct = () => {
     stock_quantity: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Product added:", product);
-    alert("Product added successfully!");
-    setProduct({
-      name: "",
-      description: "",
-      price: "",
-      stock_quantity: "",
-    });
-  };
+  const navigate = useNavigate(); // Hook for redirection
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "https://bharat-digital-backend.onrender.com/api/products/",
+        product,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_DJANGO_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Product added:", response.data);
+      toast.success("Product Add Successfully");
+
+      setProduct({
+        name: "",
+        description: "",
+        price: "",
+        stock_quantity: "",
+      });
+
+      navigate("/dashboard/all-products"); // Redirect after success
+    } catch (error) {
+      console.error("Failed to add product:", error.response?.data || error);
+      toast.error("Failed to add product");
+    }
   };
 
   return (

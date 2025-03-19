@@ -12,7 +12,7 @@ const OtpVerificationPage = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/verify-otp", {
+      const response = await axios.post("https://bharat-digital-node-server.onrender.com/api/verify-otp", {
         email,
         otp,
       });

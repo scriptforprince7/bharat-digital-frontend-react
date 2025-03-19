@@ -57,7 +57,7 @@ $ npm install
 Create a `.env` file:
 ```
 REACT_APP_BACKEND_URL=http://localhost:8000/api/products
-REACT_APP_ORDER_API=http://localhost:5000/api/orders
+REACT_APP_ORDER_API=https://bharat-digital-node-server.onrender.com/api/orders
 REACT_APP_WEBSOCKET_URL=ws://localhost:5000
 REACT_APP_JWT_SECRET=your_jwt_secret
 ```

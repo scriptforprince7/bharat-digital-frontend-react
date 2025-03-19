@@ -58,7 +58,7 @@ const Cart = () => {
             email,
           };
   
-          await axios.post("http://localhost:5000/api/orders", orderData);
+          await axios.post("https://bharat-digital-node-server.onrender.com/api/orders", orderData);
   
           toast.success("Order placed successfully!");
           localStorage.removeItem("cart");

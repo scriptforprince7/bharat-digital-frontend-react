@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../Auth.css";
 
 const SignupPage = () => {
   const [username, setUsername] = useState("");
@@ -31,6 +32,9 @@ const SignupPage = () => {
 
   return (
     <div className="auth-container">
+      <div className="back-btn" onClick={() => navigate(-1)}>
+  ⬅️
+</div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
         <input

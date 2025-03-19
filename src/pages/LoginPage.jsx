@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../Auth.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +26,9 @@ const LoginPage = () => {
 
   return (
     <div className="auth-container">
+      <div className="back-btn" onClick={() => navigate(-1)}>
+  ⬅️
+</div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <input

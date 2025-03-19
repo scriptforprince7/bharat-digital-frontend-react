@@ -17,6 +17,7 @@ const OtpVerificationPage = () => {
         email,
         otp,
       });
+      
 
       if (response.data.success) {
         toast.success("OTP Verified Successfully!");

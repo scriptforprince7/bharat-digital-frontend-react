@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode"; // Correct import
 import DarkModeToggle from "../components/DarkModeToggle";
 import "../Home.css";
 
 const Home = () => {
   const [userEmail, setUserEmail] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decoded = jwtDecode(token); // Decode the token
-        setUserEmail(decoded.email); // Extract email from payload
+        const decoded = jwtDecode(token);
+        setUserEmail(decoded.email);
       } catch (error) {
         console.error("Failed to decode token:", error);
       }
     }
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUserEmail("");
+    navigate("/login");
+  };
 
   return (
     <div className="home-container">
@@ -25,9 +32,15 @@ const Home = () => {
       <DarkModeToggle />
 
       {/* Avatar icon */}
-      <Link to="/login" className="avatar-icon">
-        👤
-      </Link>
+      {userEmail ? (
+        <div className="avatar-icon" onClick={handleLogout}>
+          🚪 Logout
+        </div>
+      ) : (
+        <Link to="/login" className="avatar-icon">
+          👤
+        </Link>
+      )}
 
       {/* Display user email if logged in */}
       {userEmail ? <h3>Hey, {userEmail}!</h3> : <h2>Welcome, Guest!</h2>}
